@@ -112,3 +112,4 @@ items.sort(function(a, b) {
   return 0;
 });
 ```
+* **Sort will change the array itself that it is applied upon**
