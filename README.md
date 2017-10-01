@@ -21,6 +21,8 @@
 
 * document.querySelectorAll doesn't returns an array but a nodeList.
 * Nodelst vs Array -> Nodelist doesn't have methods that are defined on an array.(click on prototype and see the object)
+* this.dataset in the function is the object which will return all the data attributes we put on the element.
+
 ```js
 
 const inputs = document.querySelectorAll(`.controls input`); //gets a nodelist NOT an array inside inputs
@@ -39,3 +41,4 @@ function handleUpdate() {
 inputs.forEach(input=> input.addEventListener('change',handleUpdate));
 inputs.forEach(input=> input.addEventListener('mousemove',handleUpdate));
 ```
+
