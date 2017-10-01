@@ -113,3 +113,74 @@ items.sort(function(a, b) {
 });
 ```
 * **Sort will change the array itself that it is applied upon**
+
+* **Reduce mechanism->**
+* The reduce() method applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.
+* Parameters
+    * callback -> Function to execute on each element in the array, taking four arguments:
+    * accumulator -> The accumulator accumulates the callback's return values; it is the accumulated value previously returned in the last invocation of the callback, or initialValue, if supplied (see below).
+    * currentValue -> The current element being processed in the array.
+    * currentIndex -> The index of the current element being processed in the array. Starts at index 0, if an initialValue is provided, and at index 1 otherwise.
+    * array -> The array reduce was called upon.
+    * initialValue -> Optional Value to use as the first argument to the first call of the callback. If no initial value is supplied, the first element in the array will be used. Calling reduce on an empty array without an initial value is an error.
+* Return value -> The value that results from the reduction.
+
+* Description
+* reduce executes the callback function once for each element present in the array, excluding holes in the array, receiving four arguments:
+* accumulator
+* currentValue
+* currentIndex
+* array
+* The first time the callback is called, accumulator and currentValue can be one of two values. If initialValue is provided in the call to reduce, then accumulator will be equal to initialValue, and currentValue will be equal to the first value in the array. If no initialValue is provided, then accumulator will be equal to the first value in the array, and currentValue will be equal to the second.
+
+* **Note** : If initialValue isn't provided, reduce will execute the callback function starting at index 1, skipping the first index. If initialValue is provided, it will start at index 0.
+
+* If the array is empty and no initialValue is provided, TypeError will be thrown. If the array has only one element (regardless of position) and no initialValue is provided, or if initialValue is provided but the array is empty, the solo value will be returned without calling callback.
+
+* Counting instances of values in an object
+```js
+var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+
+var countedNames = names.reduce(function (allNames, name) { 
+  if (name in allNames) {
+    allNames[name]++;
+  }
+  else {
+    allNames[name] = 1;
+  }
+  return allNames;
+}, {});
+// countedNames is:
+// { 'Alice': 2, 'Bob': 1, 'Tiff': 1, 'Bruce': 1 }
+```
+
+* Bonding arrays contained in an array of objects using the spread operator and initialValue
+```js
+// friends - an array of objects 
+// where object field "books" - list of favorite books 
+var friends = [{
+  name: 'Anna',
+  books: ['Bible', 'Harry Potter'],
+  age: 21
+}, {
+  name: 'Bob',
+  books: ['War and peace', 'Romeo and Juliet'],
+  age: 26
+}, {
+  name: 'Alice',
+  books: ['The Lord of the Rings', 'The Shining'],
+  age: 18
+}];
+
+// allbooks - list which will contain all friends' books +  
+// additional list contained in initialValue
+var allbooks = friends.reduce(function(prev, curr) {
+  return [...prev, ...curr.books];
+}, ['Alphabet']);
+
+// allbooks = [
+//   'Alphabet', 'Bible', 'Harry Potter', 'War and peace', 
+//   'Romeo and Juliet', 'The Lord of the Rings',
+//   'The Shining'
+// ]
+```
