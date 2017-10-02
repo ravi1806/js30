@@ -258,12 +258,12 @@ console.log(rest); //{c: 30, d: 40}
     console.log(livedSorted);
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-/*    const category = document.querySelector('.mw-category'); // We could have avoided writing the next line and get the links here itself by ('.mw-category a')
+    const category = document.querySelector('.mw-category'); // We could have avoided writing the next line and get the links here itself by ('.mw-category a')
     const links = [...category.querySelectorAll('a')]; // querySelectors can be applied tp any DOM elem, not just window and document.
     console.log(links);
     //convert this into an array
     const de = links.map(link => link.innerText).filter(boulevard => boulevard.includes('de'));
-    console.log(de);*/
+    console.log(de);
     // 7. sort Exercise
     // Sort the people alphabetically by last name
     const alpha = people.sort((prev, curr) => {
