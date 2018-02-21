@@ -285,3 +285,25 @@ console.log(rest); //{c: 30, d: 40}
         }, {});
     console.log(numberOfData);
 ```
+* To remove duplicates using filter
+```js
+function removeDuplicateUsingFilter(arr){
+    let unique_array = arr.filter(function(elem, index, self) {
+        return index == self.indexOf(elem);
+    });
+    return unique_array
+}
+
+console.log(removeDuplicateUsingFilter(array_with_duplicates));
+```
+
+
+* To remove duplicates using set
+```js
+function removeDuplicateUsingSet(arr){
+    let unique_array = Array.from(new Set(arr))
+    return unique_array
+}
+
+console.log(removeDuplicateUsingSet(array_with_duplicates));
+```
